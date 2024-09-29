@@ -42,9 +42,10 @@ function parseAnswer(answerText) {
     ? correctOptionMatch[1]
     : null;
 
-  const questionAnswerExplanation = answerText
-    .replace(/Answer:\s*\(.\)/, "")
-    .trim();
+  // const questionAnswerExplanation = answerText
+  //   .replace(/Answer:\s*\(.\)/, "") //include the Answer: in explanation text
+  //   .trim();
+  const questionAnswerExplanation = answerText.replace(/\s*/, "").trim();
 
   return {
     questionCorrectOption,
@@ -68,11 +69,14 @@ function generateJSON() {
 
   // Combine the parsed data into a single JSON object
   const finalData = {
+    questionSource: "UPSC",
     questionYear: questionData.questionYear,
     questionText: questionData.questionText,
     questionOptions: questionData.questionOptions,
     questionCorrectOption: answerData.questionCorrectOption,
     questionAnswerExplanation: answerData.questionAnswerExplanation,
+    questionTopic: "Modern India",
+    questionSubtopic: "The Beginning of Gandhian Era",
   };
 
   // Write the JSON object to the output file
